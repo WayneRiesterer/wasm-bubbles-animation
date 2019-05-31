@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>WASM Bubbles</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
+    <link href="main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <img src="./mugshot.jpg" />
+      <div>
+        <h1>Web Assembly Demo</h1>
+        <p>Wayne Riesterer - 2019</p>
+      </div>
+    </header>
+
+    <canvas id="canvas" width="500" height="500"></canvas>
+
+    <script src="canvas.js"></script>
+    <script>
+      const canvas = document.getElementById('canvas')
+      const context = canvas.getContext('2d')
+
+      const render = (dataLength, circleStructSize) => {
+        const circles = new Int32Array(
+          buffer,
+          _getCircles(canvas.width, canvas.height),
+          dataLength
+        )
+        context.clearRect(0, 0, canvas.width, canvas.height)
+        for (i = 0; i < circles.length; i += circleStructSize) {
+          const circle = circles.slice(i, i + circleStructSize)
+          context.beginPath()
+          context.arc(circle[0], circle[1], circle[2], 0, 2 * Math.PI, false)
+          context.fillStyle = `rgba(${circle[3]}, ${circle[4]}, ${
+            circle[5]
+          }, 1)`
+          context.fill()
+        }
+
+        window.requestAnimationFrame(() => render(dataLength, circleStructSize))
+      }
+    </script>
+  </body>
+</html>

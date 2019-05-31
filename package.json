@@ -1,0 +1,11 @@
+{
+  "name": "bubbles",
+  "version": "1.0.0",
+  "description": "WASM application using OpenGL to display bubbles on a HTML canvas element",
+  "main": "server.js",
+  "author": "Wayne Riesterer <wayne.paul.riesterer@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
